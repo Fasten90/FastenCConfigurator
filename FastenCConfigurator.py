@@ -24,6 +24,8 @@ def parse_md(content):
     for item in settings:
         config_name = item[0]
         config_settings = item[1:]
+        if not config_settings:  # Empty/Wrong line
+            continue
         generated_settings[config_name] = []
         for index, config_item in enumerate(config_settings):
             print(config_item, index)
@@ -41,15 +43,15 @@ def read_config(confile_file_path='project_config.md'):
 
 
 def main():
-    config = read_config()
-    # TODO: generate
-    print('Config', config)
-    for item in config:
-        print(item)
-        print(config[item])
-        config_file_name = 'config_{}.md'.format(item)
+    configs = read_config()
+    #print('Config', config)
+    print('Generate configs...')
+    for config_item in configs:
+        print(config_item)
+        print(configs[config_item])
+        config_file_name = 'config_{}.md'.format(config_item.strip().replace(' ', '_'))
         with open(config_file_name, 'w') as file:
-            for item in config[item]:
+            for item in configs[config_item]:
                 name_of_define = item[0]
                 value_of_define = item[1]
                 if value_of_define:
