@@ -55,7 +55,7 @@ def main():
                 name_of_define = item[0]
                 value_of_define = item[1]
                 if value_of_define:
-                    file.write('-DCONFIG_{}=1\n'.format(name_of_define))
+                    file.write('-DCONFIG_{}=1 '.format(name_of_define))
 
 
 if __name__ == '__main__':
