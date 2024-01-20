@@ -44,12 +44,12 @@ def read_config(confile_file_path='project_config.md'):
 
 def main():
     configs = read_config()
-    #print('Config', config)
     print('Generate configs...')
     for config_item in configs:
         print(config_item)
         print(configs[config_item])
-        config_file_name = 'config_{}.md'.format(config_item.strip().replace(' ', '_'))
+        config_name = config_item.strip().replace(' ', '_')
+        config_file_name = f'config_{config_name}.md'
         with open(config_file_name, 'w') as file:
             for item in configs[config_item]:
                 name_of_define = item[0]
