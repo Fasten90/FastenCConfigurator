@@ -1,1 +1,4 @@
 /.vscode/
+*.pyc
+/config_NAME_OF_SET.md
+/config_new_debug_set.md
